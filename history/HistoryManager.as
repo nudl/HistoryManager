@@ -121,10 +121,8 @@ package history
 				return;
 			}
 			
-			if ((nextStep -1) > (_steps.length - 1) && (nextStep -1) < (_steps.length - 1))
-			{
-				_steps[nextStep - 1].activate();
-			}
+			
+			_steps[nextStep - 1].activate();
 			
 			_activeStep = nextStep;
 			dispatchEvent(new HistoryEvent(eventType));
@@ -158,7 +156,7 @@ package history
 		// GET/SET SECTION 
 		//=============================================================================
 		
-		public function get activeStep():int 	{ return _activeStep; }
+		public function get activeStep():int 	{ return _activeStep;   }
 		public function get stepsLength():int 	{ return _steps.length; }
 	}
 }
