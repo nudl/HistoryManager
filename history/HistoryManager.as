@@ -98,7 +98,11 @@ package history
 			var stepsLength:int = _steps.length;
 			var eventType:String;
 			
-			if (nextStep < _activeStep)
+			if (nextStep > stepsLength || nextStep < 1 || activeStep == nextStep)
+			{
+				return;
+			}
+			else if (nextStep < _activeStep)
 			{
 				for (var i:int = _activeStep; i != nextStep; i--)
 				{
@@ -116,15 +120,11 @@ package history
 				
 				eventType = HistoryEvent.REDO;
 			}
-			else
-			{
-				return;
-			}
 			
 			
 			_steps[nextStep - 1].activate();
-			
 			_activeStep = nextStep;
+			
 			dispatchEvent(new HistoryEvent(eventType));
 		}
 		
